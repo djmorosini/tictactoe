@@ -22,7 +22,7 @@ function playGameOne() {
   if (turn === 'x') {
     output.innerHTML = '<p>Ready Player X</p>'
   } else {
-    lookAtBoard()
+    computerTurn()
   }
 }
 
@@ -40,7 +40,18 @@ function playGameTwo() {
 function checkForWinOne() {
   checkBoard('x')
   checkBoard('o')
-  if (continueGame) {
+
+  let boxes = document.getElementsByClassName('box')
+  let availableMoves = []
+  for (let box of boxes) {
+    if (box.innerHTML != 'x' && box.innerHTML != 'o') {
+      availableMoves.push(box.innerHTML)
+    }
+  }
+  if (continueGame && availableMoves.length === 0) {
+    output.innerHTML = '<p>Tie game!</p>'
+    continueGame = false
+  } else if (continueGame) {
     changeTurn()
     playGameOne()
   } else {
@@ -160,11 +171,7 @@ function checkBoard(symbol) {
   }
 }
 
-function computerTurn(availableMoves) {
-  if (availableMoves.length === 0) {
-    output.innerHTML = '<p>Tie game!</p>'
-    continueGame = false
-  } else {
+function computerTurn() {
     let one = document.getElementById('1').innerHTML
     let two = document.getElementById('2').innerHTML
     let three = document.getElementById('3').innerHTML
@@ -192,7 +199,6 @@ function computerTurn(availableMoves) {
     } else if (turn === 'o' && eight === '8') {
       handleClickOne(8)
     }
-  }
 }
 
 function checkConditions(symbol) {
@@ -223,15 +229,4 @@ function checkConditions(symbol) {
   } else if (([seven, nine].join('') === symbol || [two, five].join('') === symbol) && eight === '8') {
     handleClickOne(8)
   }
-}
-
-function lookAtBoard() {
-  let boxes = document.getElementsByClassName('box')
-  let availableMoves = []
-  for (let box of boxes) {
-    if (box.innerHTML != 'x' && box.innerHTML != 'o') {
-      availableMoves.push(box.innerHTML)
-    }
-  }
-  computerTurn(availableMoves)
 }
