@@ -48,13 +48,13 @@ function placeSymbol(square) {
     } else {
       square.innerHTML = 'o'
     }
-    checkForWin()
+    checkBoard()
   }
 }
 
-function checkForWin() {
-  checkBoard('x')
-  checkBoard('o')
+function checkBoard() {
+  checkWinConditions('x')
+  checkWinConditions('o')
 
   let boxes = document.getElementsByClassName('box')
   let availableMoves = []
@@ -82,7 +82,7 @@ function changeTurn() {
   }
 }
 
-function checkBoard(symbol) {
+function checkWinConditions(symbol) {
   let one = document.getElementById('1').innerHTML
   let two = document.getElementById('2').innerHTML
   let three = document.getElementById('3').innerHTML
@@ -121,8 +121,8 @@ function computerTurn() {
   let eight = document.getElementById('8').innerHTML
   let nine = document.getElementById('9').innerHTML
 
-  checkConditions('oo')
-  checkConditions('xx')
+  lookForBlockOrWin('oo')
+  lookForBlockOrWin('xx')
   if (turn === 'o' && five === '5') {
     handleClick(5)
   } else if (turn === 'o' && five === 'x' && one === '1') {
@@ -144,7 +144,7 @@ function computerTurn() {
   }
 }
 
-function checkConditions(symbol) {
+function lookForBlockOrWin(symbol) {
   let one = document.getElementById('1').innerHTML
   let two = document.getElementById('2').innerHTML
   let three = document.getElementById('3').innerHTML
