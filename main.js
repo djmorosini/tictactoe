@@ -3,22 +3,23 @@ let continueGame = true
 let numberOfPlayers
 
 function setupGame(players) {
-  let wrapper = document.getElementById('wrapper')
+  let gameBoard = document.getElementById('game-board')
+  let title = document.getElementById('title')
   turn = 'x'
   continueGame = true
-  wrapper.innerHTML = "<div id='top'><span id='1' class='box' onclick='handleClick(1);'>1</span>|<span id='2' class='box' onclick='handleClick(2);'>2</span>|<span id='3' class='box' onclick='handleClick(3);'>3</span></div><div><span class='barrier'>---</span><span class='barrier'>---</span><span class='barrier'>---</span></div><div id='middle'><span id='4' class='box' onclick='handleClick(4);'>4</span>|<span id='5' class='box' onclick='handleClick(5);'>5</span>|<span id='6' class='box' onclick='handleClick(6);'>6</span></div><div><span class='barrier'>---</span><span class='barrier'>---</span><span class='barrier'>---</span></div><div id='bottom'><span id='7' class='box' onclick='handleClick(7);'>7</span>|<span id='8' class='box' onclick='handleClick(8);'>8</span>|<span id='9' class='box' onclick='handleClick(9);'>9</span></div><div id='output'></div>"
+  gameBoard.innerHTML = "<div id='top'><span id='1' class='box' onclick='handleClick(1);'>1</span>|<span id='2' class='box' onclick='handleClick(2);'>2</span>|<span id='3' class='box' onclick='handleClick(3);'>3</span></div><div><span class='barrier'>---</span><span class='barrier'>---</span><span class='barrier'>---</span></div><div id='middle'><span id='4' class='box' onclick='handleClick(4);'>4</span>|<span id='5' class='box' onclick='handleClick(5);'>5</span>|<span id='6' class='box' onclick='handleClick(6);'>6</span></div><div><span class='barrier'>---</span><span class='barrier'>---</span><span class='barrier'>---</span></div><div id='bottom'><span id='7' class='box' onclick='handleClick(7);'>7</span>|<span id='8' class='box' onclick='handleClick(8);'>8</span>|<span id='9' class='box' onclick='handleClick(9);'>9</span></div><div id='output'></div>"
   if (players === 'one') {
     numberOfPlayers = players
+    title.innerHTML = '<h1>Single player</h1>'
   } else {
     numberOfPlayers = players
+    title.innerHTML = '<h1>Two player</h1>'
   }
   playGame()
 }
 
 function playGame() {
-  let title = document.getElementById('title')
   let output = document.getElementById('output')
-  title.innerHTML = '<h1>Single player</h1>'
   if (turn === 'x') {
     output.innerHTML = '<p>Ready Player X</p>'
   } else {

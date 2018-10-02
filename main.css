@@ -1,15 +1,25 @@
+body {
+  font-size: 45px;
+}
+button {
+  font-size: 45px;
+  margin-bottom: 20px;
+}
+h1 {
+  font-size: 45px;
+}
 .box {
   padding: 0 20px 0 20px;
 }
 .barrier {
-  margin: 10px;
+  margin: 12px;
 }
-body {
-  font-size: 50px;
+#wrapper {
+  text-align: center
 }
-button {
-  font-size: 50px;
-}
-h1 {
-  font-size: 50px;
+#buttons {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 45px;
 }
