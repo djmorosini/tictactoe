@@ -127,8 +127,12 @@ function computerTurn() {
     handleClick(5)
   } else if (turn === 'o' && five === 'x' && one === '1') {
     handleClick(1)
-  } else if (turn === 'o' && five === 'x' && nine === 'x') {
+  } else if (turn === 'o' && five === 'x' && nine === 'x' && seven === '7') {
     handleClick(7)
+  } else if (turn === 'o' && (two ==='x' && four === 'x' || two ==='x' && six === 'x' || six ==='x' && eight === 'x') && three === '3') {
+    handleClick(3)
+  } else if (turn === 'o' && (four ==='x' && eight === 'x') && nine === '9') {
+    handleClick(9)
   } else if (turn === 'o' && two === '2') {
     handleClick(2)
   } else if (turn === 'o' && four === '4') {
