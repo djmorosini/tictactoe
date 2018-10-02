@@ -1,1 +1,1 @@
-[Tic-Tac-Toe game](www.djmorosini.github.io/tictactoe)
+[Tic-Tac-Toe game](https://djmorosini.github.io/tictactoe/)
