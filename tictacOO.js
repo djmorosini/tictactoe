@@ -129,12 +129,12 @@ class TicTacToe {
       this.handleClick(5)
     } else if (this.turn === 'o' && five === 'x' && one === '1') {
       this.handleClick(1)
-    } else if (this.turn === 'o' && five === 'x' && nine === 'x' && seven === '7') {
+    } else if (this.turn === 'o' && (five === 'x' && nine === 'x' || four === 'x' && eight === 'x') && seven === '7') {
       this.handleClick(7)
+    } else if (this.turn === 'o' && six === 'x' && eight === 'x' && nine === '9') {
+      this.handleClick(9)
     } else if (this.turn === 'o' && (two === 'x' && four === 'x' || two === 'x' && six === 'x' || six === 'x' && eight === 'x') && three === '3') {
       this.handleClick(3)
-    } else if (this.turn === 'o' && (four === 'x' && eight === 'x') && nine === '9') {
-      this.handleClick(9)
     } else if (this.turn === 'o' && two === '2') {
       this.handleClick(2)
     } else if (this.turn === 'o' && four === '4') {

@@ -9,20 +9,18 @@
   <link rel="icon" type="image/png" href="images/tictactoe.png">
   <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
   <script src="tictacOO.js"></script>
+  <script>const game = new TicTacToe()</script>
 </head>
 
 <body>
   <div id='buttons'>
-  <button onClick="game.setupGame('one')">PvE</button>
-  <button onClick="game.setupGame('two')">PvP</button>
-</div>
+    <button onClick="game.setupGame('one')">PvE</button>
+    <button onClick="game.setupGame('two')">PvP</button>
+  </div>
   <div id='wrapper'>
     <div id='title'></div>
     <div id='game-board'></div>
   </div>
-  <script>
-    const game = new TicTacToe()
-  </script>
 </body>
 
 </html>
