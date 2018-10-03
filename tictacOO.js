@@ -43,7 +43,7 @@ class TicTacToe {
   placeSymbol(square) {
     let output = document.getElementById('output')
     if (square.innerHTML === 'x' || square.innerHTML === 'o') {
-      output.innerHTML = '<p>Square already taken!</p>'
+      output.innerHTML = '<p>Impossible! That cell is already full.</p>'
     } else {
       if (this.turn === 'x') {
         square.innerHTML = 'x'
@@ -67,6 +67,7 @@ class TicTacToe {
     }
     if (this.continueGame && availableMoves.length === 0) {
       output.innerHTML = '<p>Tie game!</p>'
+      output.innerHTML += "<p>Game over!</p>"
       this.continueGame = false
     } else if (this.continueGame) {
       this.changeTurn()
@@ -107,7 +108,7 @@ class TicTacToe {
       [four, five, six].join('') === (symbol.repeat(3)) ||
       [seven, eight, nine].join('') === (symbol.repeat(3))
     ) {
-      output.innerHTML = `<p>${symbol.toUpperCase()} wins!</p>`
+      output.innerHTML = `<p>Congratulations! Player ${symbol.toUpperCase()} wins!</p>`
       this.continueGame = false
     }
   }

@@ -2,6 +2,16 @@ let turn = 'x'
 let continueGame = true
 let numberOfPlayers
 
+let one = document.getElementById('1').innerHTML
+let two = document.getElementById('2').innerHTML
+let three = document.getElementById('3').innerHTML
+let four = document.getElementById('4').innerHTML
+let five = document.getElementById('5').innerHTML
+let six = document.getElementById('6').innerHTML
+let seven = document.getElementById('7').innerHTML
+let eight = document.getElementById('8').innerHTML
+let nine = document.getElementById('9').innerHTML
+
 function setupGame(players) {
   let gameBoard = document.getElementById('game-board')
   let title = document.getElementById('title')
@@ -41,7 +51,7 @@ function handleClick(squareNum) {
 function placeSymbol(square) {
   let output = document.getElementById('output')
   if (square.innerHTML === 'x' || square.innerHTML === 'o') {
-    output.innerHTML = '<p>Square already taken!</p>'
+    output.innerHTML = '<p>Impossible! That cell is already full.</p>'
   } else {
     if (turn === 'x') {
       square.innerHTML = 'x'
@@ -83,16 +93,6 @@ function changeTurn() {
 }
 
 function checkWinConditions(symbol) {
-  let one = document.getElementById('1').innerHTML
-  let two = document.getElementById('2').innerHTML
-  let three = document.getElementById('3').innerHTML
-  let four = document.getElementById('4').innerHTML
-  let five = document.getElementById('5').innerHTML
-  let six = document.getElementById('6').innerHTML
-  let seven = document.getElementById('7').innerHTML
-  let eight = document.getElementById('8').innerHTML
-  let nine = document.getElementById('9').innerHTML
-
   let output = document.getElementById('output')
 
   if (
@@ -105,22 +105,12 @@ function checkWinConditions(symbol) {
     [four, five, six].join('') === (symbol.repeat(3)) ||
     [seven, eight, nine].join('') === (symbol.repeat(3))
   ) {
-    output.innerHTML = `<p>${symbol.toUpperCase()} wins!</p>`
+    output.innerHTML = `<p>Congratulations! Player ${symbol.toUpperCase()} wins!</p>`
     continueGame = false
   }
 }
 
 function computerTurn() {
-  let one = document.getElementById('1').innerHTML
-  let two = document.getElementById('2').innerHTML
-  let three = document.getElementById('3').innerHTML
-  let four = document.getElementById('4').innerHTML
-  let five = document.getElementById('5').innerHTML
-  let six = document.getElementById('6').innerHTML
-  let seven = document.getElementById('7').innerHTML
-  let eight = document.getElementById('8').innerHTML
-  let nine = document.getElementById('9').innerHTML
-
   lookForBlockOrWin('oo')
   lookForBlockOrWin('xx')
   if (turn === 'o' && five === '5') {
@@ -145,16 +135,6 @@ function computerTurn() {
 }
 
 function lookForBlockOrWin(symbol) {
-  let one = document.getElementById('1').innerHTML
-  let two = document.getElementById('2').innerHTML
-  let three = document.getElementById('3').innerHTML
-  let four = document.getElementById('4').innerHTML
-  let five = document.getElementById('5').innerHTML
-  let six = document.getElementById('6').innerHTML
-  let seven = document.getElementById('7').innerHTML
-  let eight = document.getElementById('8').innerHTML
-  let nine = document.getElementById('9').innerHTML
-
   if (([two, three].join('') === symbol || [four, seven].join('') === symbol || [five, nine].join('') === symbol) && one === '1') {
     handleClick(1)
   } else if (([one, two].join('') === symbol || [seven, five].join('') === symbol || [nine, six].join('') === symbol) && three === '3') {
