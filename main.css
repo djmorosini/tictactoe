@@ -9,9 +9,12 @@ h1 {
   font-size: 45px;
 }
 .box {
-  padding: 20px 25px 20px 25px;
+  height:100px;
+  width:100px;
   display: inline-block;
   border: 1px solid black;
+  font-size: 80px;
+  text-align: center;
 }
 div[id='top'] {
   display: flex;
@@ -29,8 +32,6 @@ div[id='top'] span{
   border-top: none;
 }
 div[id='bottom'] span{
-  display: flex;
-  flex-direction: row;
   border-bottom: none;
 }
 div span:first-child{

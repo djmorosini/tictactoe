@@ -9,7 +9,7 @@ class TicTacToe {
     let title = document.getElementById('title')
     this.turn = 'x'
     this.continueGame = true
-    gameBoard.innerHTML = "<div id='top'><span id='1' class='box' onclick='game.handleClick(1);'>1</span><span id='2' class='box' onclick='game.handleClick(2);'>2</span><span id='3' class='box' onclick='game.handleClick(3);'>3</span></div><div id='middle'><span id='4' class='box' onclick='game.handleClick(4);'>4</span><span id='5' class='box' onclick='game.handleClick(5);'>5</span><span id='6' class='box' onclick='game.handleClick(6);'>6</span></div><div id='bottom'><span id='7' class='box' onclick='game.handleClick(7);'>7</span><span id='8' class='box' onclick='game.handleClick(8);'>8</span><span id='9' class='box' onclick='game.handleClick(9);'>9</span></div>"
+    gameBoard.innerHTML = "<div id='top'><span id='1' class='box' onclick='game.handleClick(\"1\");'></span><span id='2' class='box' onclick='game.handleClick(\"2\");'></span><span id='3' class='box' onclick='game.handleClick(\"3\");'></span></div><div id='middle'><span id='4' class='box' onclick='game.handleClick(\"4\");'></span><span id='5' class='box' onclick='game.handleClick(\"5\");'></span><span id='6' class='box' onclick='game.handleClick(\"6\");'></span></div><div id='bottom'><span id='7' class='box' onclick='game.handleClick(\"7\");'></span><span id='8' class='box' onclick='game.handleClick(\"8\");'></span><span id='9' class='box' onclick='game.handleClick(\"9\");'></span></div>"
     if (players === 'one') {
       this.numberOfPlayers = players
       title.innerHTML = '<h1>Single player</h1>'
@@ -33,9 +33,9 @@ class TicTacToe {
     }
   }
 
-  handleClick(squareNum) {
+  handleClick(cellID) {
     if (this.continueGame) {
-      let square = document.getElementById(squareNum)
+      let square = document.getElementById(cellID)
       this.placeSymbol(square)
     }
   }
@@ -114,6 +114,9 @@ class TicTacToe {
   }
 
   computerTurn() {
+    this.lookForBlockOrWin('oo')
+    this.lookForBlockOrWin('xx')
+
     let one = document.getElementById('1').innerHTML
     let two = document.getElementById('2').innerHTML
     let three = document.getElementById('3').innerHTML
@@ -123,27 +126,24 @@ class TicTacToe {
     let seven = document.getElementById('7').innerHTML
     let eight = document.getElementById('8').innerHTML
     let nine = document.getElementById('9').innerHTML
-
-    this.lookForBlockOrWin('oo')
-    this.lookForBlockOrWin('xx')
-    if (this.turn === 'o' && five === '5') {
-      this.handleClick(5)
-    } else if (this.turn === 'o' && five === 'x' && one === '1') {
-      this.handleClick(1)
-    } else if (this.turn === 'o' && (one === 'x' && eight === 'x' || five === 'x' && nine === 'x' || four === 'x' && eight === 'x') && seven === '7') {
-      this.handleClick(7)
-    } else if (this.turn === 'o' && (six === 'x' && eight === 'x' || three === 'x' && eight === 'x') && nine === '9') {
-      this.handleClick(9)
-    } else if (this.turn === 'o' && (two === 'x' && four === 'x' || two === 'x' && six === 'x' || six === 'x' && eight === 'x') && three === '3') {
-      this.handleClick(3)
-    } else if (this.turn === 'o' && two === '2') {
-      this.handleClick(2)
-    } else if (this.turn === 'o' && four === '4') {
-      this.handleClick(4)
-    } else if (this.turn === 'o' && six === '6') {
-      this.handleClick(6)
-    } else if (this.turn === 'o' && eight === '8') {
-      this.handleClick(8)
+    if (this.turn === 'o' && five === '') {
+      this.handleClick('5')
+    } else if (this.turn === 'o' && five === 'x' && one === '') {
+      this.handleClick('1')
+    } else if (this.turn === 'o' && (one === 'x' && eight === 'x' || five === 'x' && nine === 'x' || four === 'x' && eight === 'x') && seven === '') {
+      this.handleClick('7')
+    } else if (this.turn === 'o' && (six === 'x' && eight === 'x' || three === 'x' && eight === 'x') && nine === '') {
+      this.handleClick('9')
+    } else if (this.turn === 'o' && (two === 'x' && four === 'x' || two === 'x' && six === 'x' || six === 'x' && eight === 'x') && three === '') {
+      this.handleClick('3')
+    } else if (this.turn === 'o' && two === '') {
+      this.handleClick('2')
+    } else if (this.turn === 'o' && four === '') {
+      this.handleClick('4')
+    } else if (this.turn === 'o' && six === '') {
+      this.handleClick('6')
+    } else if (this.turn === 'o' && eight === '') {
+      this.handleClick('8')
     }
   }
 
@@ -157,23 +157,23 @@ class TicTacToe {
     let seven = document.getElementById('7').innerHTML
     let eight = document.getElementById('8').innerHTML
     let nine = document.getElementById('9').innerHTML
-
-    if (([two, three].join('') === symbol || [four, seven].join('') === symbol || [five, nine].join('') === symbol) && one === '1') {
-      this.handleClick(1)
-    } else if (([one, two].join('') === symbol || [seven, five].join('') === symbol || [nine, six].join('') === symbol) && three === '3') {
-      this.handleClick(3)
-    } else if (([one, four].join('') === symbol || [three, five].join('') === symbol || [nine, eight].join('') === symbol) && seven === '7') {
-      this.handleClick(7)
-    } else if (([one, five].join('') === symbol || [three, six].join('') === symbol || [seven, eight].join('') === symbol) && nine === '9') {
-      this.handleClick(9)
-    } else if (([one, three].join('') === symbol || [eight, five].join('') === symbol) && two === '2') {
-      this.handleClick(2)
-    } else if (([five, six].join('') === symbol || [one, seven].join('') === symbol) && four === '4') {
-      this.handleClick(4)
-    } else if (([three, nine].join('') === symbol || [four, five].join('') === symbol) && six === '6') {
-      this.handleClick(6)
-    } else if (([seven, nine].join('') === symbol || [two, five].join('') === symbol) && eight === '8') {
-      this.handleClick(8)
+  
+    if (([two, three].join('') === symbol || [four, seven].join('') === symbol || [five, nine].join('') === symbol) && one === '') {
+      this.handleClick('1')
+    } else if (([one, two].join('') === symbol || [seven, five].join('') === symbol || [nine, six].join('') === symbol) && three === '') {
+      this.handleClick('3')
+    } else if (([one, four].join('') === symbol || [three, five].join('') === symbol || [nine, eight].join('') === symbol) && seven === '') {
+      this.handleClick('7')
+    } else if (([one, five].join('') === symbol || [three, six].join('') === symbol || [seven, eight].join('') === symbol) && nine === '') {
+      this.handleClick('9')
+    } else if (([one, three].join('') === symbol || [eight, five].join('') === symbol) && two === '') {
+      this.handleClick('2')
+    } else if (([five, six].join('') === symbol || [one, seven].join('') === symbol) && four === '') {
+      this.handleClick('4')
+    } else if (([three, nine].join('') === symbol || [four, five].join('') === symbol) && six === '') {
+      this.handleClick('6')
+    } else if (([seven, nine].join('') === symbol || [two, five].join('') === symbol) && eight === '') {
+      this.handleClick('8')
     }
   }
 }
