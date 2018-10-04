@@ -1,12 +1,18 @@
 body {
   font-size: 45px;
+  font-family: 'Lakki Reddy', cursive;
 }
 button {
   font-size: 45px;
   margin-bottom: 20px;
+  height: 60px;
+  font-family: 'Lakki Reddy', cursive;
 }
 h1 {
   font-size: 45px;
+}
+p {
+  margin: 10px;
 }
 .box {
   height:100px;
@@ -15,6 +21,7 @@ h1 {
   border: 1px solid black;
   font-size: 80px;
   text-align: center;
+  overflow: hidden;
 }
 div[id='top'] {
   display: flex;
