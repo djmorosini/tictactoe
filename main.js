@@ -1,11 +1,11 @@
-let turn = 'x'
+let turn = 'X'
 let continueGame = true
 let numberOfPlayers
 
 function setupGame(players) {
   let gameBoard = document.getElementById('game-board')
   let title = document.getElementById('title')
-  turn = 'x'
+  turn = 'X'
   continueGame = true
   gameBoard.innerHTML = "<div id='top'><span id='1' class='box' onclick='handleClick(\"1\");'></span><span id='2' class='box' onclick='handleClick(\"2\");'></span><span id='3' class='box' onclick='handleClick(\"3\");'></span></div><div id='middle'><span id='4' class='box' onclick='handleClick(\"4\");'></span><span id='5' class='box' onclick='handleClick(\"5\");'></span><span id='6' class='box' onclick='handleClick(\"6\");'></span></div><div id='bottom'><span id='7' class='box' onclick='handleClick(\"7\");'></span><span id='8' class='box' onclick='handleClick(\"8\");'></span><span id='9' class='box' onclick='handleClick(\"9\");'></span></div>"
   if (players === 'one') {
@@ -20,7 +20,7 @@ function setupGame(players) {
 
 function playGame() {
   let output = document.getElementById('output')
-  if (turn === 'x') {
+  if (turn === 'X') {
     output.innerHTML = '<p>Ready Player X</p>'
   } else {
     if (numberOfPlayers === 'one') {
@@ -40,26 +40,26 @@ function handleClick(cellID) {
 
 function placeSymbol(square) {
   let output = document.getElementById('output')
-  if (square.innerHTML === 'x' || square.innerHTML === 'o') {
+  if (square.innerHTML === 'X' || square.innerHTML === 'O') {
     output.innerHTML = '<p>Impossible! That cell is already full.</p>'
   } else {
-    if (turn === 'x') {
-      square.innerHTML = 'x'
+    if (turn === 'X') {
+      square.innerHTML = 'X'
     } else {
-      square.innerHTML = 'o'
+      square.innerHTML = 'O'
     }
     checkBoard()
   }
 }
 
 function checkBoard() {
-  checkWinConditions('x')
-  checkWinConditions('o')
+  checkWinConditions('X')
+  checkWinConditions('O')
 
   let boxes = document.getElementsByClassName('box')
   let availableMoves = []
   for (let box of boxes) {
-    if (box.innerHTML != 'x' && box.innerHTML != 'o') {
+    if (box.innerHTML != 'X' && box.innerHTML != 'O') {
       availableMoves.push(box.innerHTML)
     }
   }
@@ -75,10 +75,10 @@ function checkBoard() {
 }
 
 function changeTurn() {
-  if (turn === 'x') {
-    turn = 'o'
+  if (turn === 'X') {
+    turn = 'O'
   } else {
-    turn = 'x'
+    turn = 'X'
   }
 }
 
@@ -110,8 +110,8 @@ function checkWinConditions(symbol) {
 }
 
 function computerTurn() {
-  lookForBlockOrWin('oo')
-  lookForBlockOrWin('xx')
+  lookForBlockOrWin('OO')
+  lookForBlockOrWin('XX')
 
   let one = document.getElementById('1').innerHTML
   let two = document.getElementById('2').innerHTML
@@ -122,23 +122,23 @@ function computerTurn() {
   let seven = document.getElementById('7').innerHTML
   let eight = document.getElementById('8').innerHTML
   let nine = document.getElementById('9').innerHTML
-  if (turn === 'o' && five === '') {
+  if (turn === 'O' && five === '') {
     handleClick('5')
-  } else if (turn === 'o' && five === 'x' && one === '') {
+  } else if (turn === 'O' && five === 'X' && one === '') {
     handleClick('1')
-  } else if (turn === 'o' && (one === 'x' && eight === 'x' || five === 'x' && nine === 'x' || four === 'x' && eight === 'x') && seven === '') {
+  } else if (turn === 'O' && (one === 'X' && eight === 'X' || five === 'X' && nine === 'X' || four === 'X' && eight === 'X') && seven === '') {
     handleClick('7')
-  } else if (turn === 'o' && (six === 'x' && eight === 'x' || three === 'x' && eight === 'x') && nine === '') {
+  } else if (turn === 'O' && (six === 'X' && eight === 'X' || three === 'X' && eight === 'X') && nine === '') {
     handleClick('9')
-  } else if (turn === 'o' && (two === 'x' && four === 'x' || two === 'x' && six === 'x' || six === 'x' && eight === 'x') && three === '') {
+  } else if (turn === 'O' && (two === 'X' && four === 'X' || two === 'X' && six === 'X' || six === 'X' && eight === 'X') && three === '') {
     handleClick('3')
-  } else if (turn === 'o' && two === '') {
+  } else if (turn === 'O' && two === '') {
     handleClick('2')
-  } else if (turn === 'o' && four === '') {
+  } else if (turn === 'O' && four === '') {
     handleClick('4')
-  } else if (turn === 'o' && six === '') {
+  } else if (turn === 'O' && six === '') {
     handleClick('6')
-  } else if (turn === 'o' && eight === '') {
+  } else if (turn === 'O' && eight === '') {
     handleClick('8')
   }
 }

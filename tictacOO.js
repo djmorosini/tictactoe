@@ -1,13 +1,13 @@
 class TicTacToe {
   constructor() {
-    this.turn = 'x'
+    this.turn = 'X'
     this.continueGame = true
     this.numberOfPlayers
   }
   setupGame(players) {
     let gameBoard = document.getElementById('game-board')
     let title = document.getElementById('title')
-    this.turn = 'x'
+    this.turn = 'X'
     this.continueGame = true
     gameBoard.innerHTML = "<div id='top'><span id='1' class='box' onclick='game.handleClick(\"1\");'></span><span id='2' class='box' onclick='game.handleClick(\"2\");'></span><span id='3' class='box' onclick='game.handleClick(\"3\");'></span></div><div id='middle'><span id='4' class='box' onclick='game.handleClick(\"4\");'></span><span id='5' class='box' onclick='game.handleClick(\"5\");'></span><span id='6' class='box' onclick='game.handleClick(\"6\");'></span></div><div id='bottom'><span id='7' class='box' onclick='game.handleClick(\"7\");'></span><span id='8' class='box' onclick='game.handleClick(\"8\");'></span><span id='9' class='box' onclick='game.handleClick(\"9\");'></span></div>"
     if (players === 'one') {
@@ -22,7 +22,7 @@ class TicTacToe {
 
   playGame() {
     let output = document.getElementById('output')
-    if (this.turn === 'x') {
+    if (this.turn === 'X') {
       output.innerHTML = '<p>Ready Player X</p>'
     } else {
       if (this.numberOfPlayers === 'one') {
@@ -42,26 +42,26 @@ class TicTacToe {
 
   placeSymbol(square) {
     let output = document.getElementById('output')
-    if (square.innerHTML === 'x' || square.innerHTML === 'o') {
+    if (square.innerHTML === 'X' || square.innerHTML === 'O') {
       output.innerHTML = '<p>Impossible! That cell is already full.</p>'
     } else {
-      if (this.turn === 'x') {
-        square.innerHTML = 'x'
+      if (this.turn === 'X') {
+        square.innerHTML = 'X'
       } else {
-        square.innerHTML = 'o'
+        square.innerHTML = 'O'
       }
       this.checkBoard()
     }
   }
 
   checkBoard() {
-    this.checkWinConditions('x')
-    this.checkWinConditions('o')
+    this.checkWinConditions('X')
+    this.checkWinConditions('O')
 
     let boxes = document.getElementsByClassName('box')
     let availableMoves = []
     for (let box of boxes) {
-      if (box.innerHTML != 'x' && box.innerHTML != 'o') {
+      if (box.innerHTML != 'X' && box.innerHTML != 'O') {
         availableMoves.push(box.innerHTML)
       }
     }
@@ -78,10 +78,10 @@ class TicTacToe {
   }
 
   changeTurn() {
-    if (this.turn === 'x') {
-      this.turn = 'o'
+    if (this.turn === 'X') {
+      this.turn = 'O'
     } else {
-      this.turn = 'x'
+      this.turn = 'X'
     }
   }
 
@@ -114,8 +114,8 @@ class TicTacToe {
   }
 
   computerTurn() {
-    this.lookForBlockOrWin('oo')
-    this.lookForBlockOrWin('xx')
+    this.lookForBlockOrWin('OO')
+    this.lookForBlockOrWin('XX')
 
     let one = document.getElementById('1').innerHTML
     let two = document.getElementById('2').innerHTML
@@ -126,23 +126,23 @@ class TicTacToe {
     let seven = document.getElementById('7').innerHTML
     let eight = document.getElementById('8').innerHTML
     let nine = document.getElementById('9').innerHTML
-    if (this.turn === 'o' && five === '') {
+    if (this.turn === 'O' && five === '') {
       this.handleClick('5')
-    } else if (this.turn === 'o' && five === 'x' && one === '') {
+    } else if (this.turn === 'O' && five === 'X' && one === '') {
       this.handleClick('1')
-    } else if (this.turn === 'o' && (one === 'x' && eight === 'x' || five === 'x' && nine === 'x' || four === 'x' && eight === 'x') && seven === '') {
+    } else if (this.turn === 'O' && (one === 'X' && eight === 'X' || five === 'X' && nine === 'X' || four === 'X' && eight === 'X') && seven === '') {
       this.handleClick('7')
-    } else if (this.turn === 'o' && (six === 'x' && eight === 'x' || three === 'x' && eight === 'x') && nine === '') {
+    } else if (this.turn === 'O' && (six === 'X' && eight === 'X' || three === 'X' && eight === 'X') && nine === '') {
       this.handleClick('9')
-    } else if (this.turn === 'o' && (two === 'x' && four === 'x' || two === 'x' && six === 'x' || six === 'x' && eight === 'x') && three === '') {
+    } else if (this.turn === 'O' && (two === 'X' && four === 'X' || two === 'X' && six === 'X' || six === 'X' && eight === 'X') && three === '') {
       this.handleClick('3')
-    } else if (this.turn === 'o' && two === '') {
+    } else if (this.turn === 'O' && two === '') {
       this.handleClick('2')
-    } else if (this.turn === 'o' && four === '') {
+    } else if (this.turn === 'O' && four === '') {
       this.handleClick('4')
-    } else if (this.turn === 'o' && six === '') {
+    } else if (this.turn === 'O' && six === '') {
       this.handleClick('6')
-    } else if (this.turn === 'o' && eight === '') {
+    } else if (this.turn === 'O' && eight === '') {
       this.handleClick('8')
     }
   }
