@@ -1,28 +1,52 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Tic-Tac-Toe</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Tic Tac Toe</title>
   <link rel="icon" type="image/png" href="images/tictactoe.png">
   <link href="https://fonts.googleapis.com/css?family=Lakki+Reddy" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-  <script src="tictacOO.js"></script>
-  <script>const game = new TicTacToe()</script>
+  <link type="text/css" rel="stylesheet" href="style.css">
+  <script src="main.js"></script>
 </head>
 
 <body>
   <div id='buttons'>
-    <button onClick="game.setupGame('one')">PvE</button>
-    <button onClick="game.setupGame('two')">PvP</button>
+    <h1>Tic Tac Toe</h1>
+    <button onClick="setupGame('one')">PvE Start</button>
+    <button onClick="setupGame('two')">PvP Start</button>
+    <button onClick="setupGame('zero')">AI Start</button>
   </div>
   <div id='wrapper'>
     <div id='title'></div>
-    <div id='game-board'></div>
     <div id='output'></div>
   </div>
+  <div class="board">
+    <div id="row-1">
+      <div id="cell-1" class='box'></div>
+      <div id="cell-2" class='box'></div>
+      <div id="cell-3" class='box'></div>
+    </div>
+    <div id="row-2">
+      <div id="cell-4" class='box'></div>
+      <div id="cell-5" class='box'></div>
+      <div id="cell-6" class='box'></div>
+    </div>
+    <div id="row-3">
+      <div id="cell-7" class='box'></div>
+      <div id="cell-8" class='box'></div>
+      <div id="cell-9" class='box'></div>
+    </div>
+  </div>
+
+  <script>
+    let cells = document.getElementsByClassName('box')
+    for (let cell of cells) {
+      cell.addEventListener('click', function () { handleClick(cell.id) })
+    }
+  </script>
 </body>
 
 </html>
