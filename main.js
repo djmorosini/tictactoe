@@ -13,7 +13,7 @@ let oWins = 0
 let ties = 0
 let aiGame = 1
 
-// 🧙 🎃 👻 🦇 🧙‍
+// 🧙 🎃 👻 🧛🏻‍
 
 var delay = (function () {
   var timer = 0;
