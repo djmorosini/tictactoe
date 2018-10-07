@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Tic Tac Toe</title>
   <link rel="icon" type="image/png" href="images/tictactoe.png">
-  <link href="https://fonts.googleapis.com/css?family=Lakki+Reddy" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Butcherman|Creepster|Eater|Nosifer|Lakki+Reddy" rel="stylesheet">
   <link type="text/css" rel="stylesheet" href="style.css">
   <script src="main.js"></script>
 </head>
@@ -15,16 +15,19 @@
 <body>
   <div id='buttons'>
     <h1>Tic Tac Toe</h1>
-    <button onClick="setupGame('one')">PvE Start</button>
-    <button onClick="setupGame('two')">PvP Start</button>
-    <button onClick="setupGame('zero')">AI Start</button>
+    <div>Choose a Symbol;</div>
     <div id='choose'>
-      <button onclick='setPlayer("witch")'>🧙</button>
-      <button onclick='setPlayer("pumpkin")'>🎃</button>
-      <button onclick='setPlayer("ghost")'>👻</button>
-      <button onclick='setPlayer("vampire")'>🧛🏻‍</button>
-      <input id='symbolInput' style='width:80px; height: 25px; margin-right: 5px;'/><button onclick='setPlayer("input")'>Submit</button>
+      <button class='symbolButton' onclick='setPlayer("witch")'>🧙</button>
+      <button class='symbolButton' onclick='setPlayer("pumpkin")'>🎃</button>
+      <button class='symbolButton' onclick='setPlayer("ghost")'>👻</button>
+      <button class='symbolButton' onclick='setPlayer("vampire")'>🧛🏻‍</button>
+      <input id='symbolInput' /><button id='submitButton' onclick='setPlayer("input")'>Submit</button>
     </div>
+    <div>Start a Game;</div>
+    <button class='startButton' onClick="setupGame('one')">PvE Start</button>
+    <button class='startButton' onClick="setupGame('two')">PvP Start</button>
+    <button class='startButton' onClick="setupGame('zero')">AI Battle</button>
+    <button class='startButton' onclick='endGame()'>End Game</button>
     <div id='playerSymbol'></div>
   </div>
   <div id='wrapper'>

@@ -23,6 +23,12 @@ var delay = (function () {
   };
 })();
 
+function endGame() {
+  continueGame = false;
+  let output = document.getElementById('output')
+  output.innerHTML = '<p>Game Ended!</p>'
+}
+
 function setupGame(players) {
   let title = document.getElementById('title')
   turn = 'x'
@@ -35,7 +41,7 @@ function setupGame(players) {
 
   if (players === 'one') {
     numberOfPlayers = players
-    title.innerHTML = '<h1>Single player</h1>'
+    title.innerHTML = '<h1>PvE</h1>'
   } else if (players === 'zero') {
     numberOfPlayers = players
     title.innerHTML = '<h1>AI Battle!</h1>'
@@ -48,7 +54,7 @@ function setupGame(players) {
     console.log(turn + ' goes first.')
   } else {
     numberOfPlayers = players
-    title.innerHTML = '<h1>Two player</h1>'
+    title.innerHTML = '<h1>PvP</h1>'
   }
   playGame()
 }
@@ -109,9 +115,9 @@ function setPlayer(symbol) {
       }
     }
     if (whichPlayer === 'first') {
-      playerSymbol.innerHTML = whichPlayer + ' symbol is ' + firstPlayerSymbol
+      playerSymbol.innerHTML = '<p>' + whichPlayer + ' symbol is ' + firstPlayerSymbol + '</p>'
     } else {
-      playerSymbol.innerHTML = whichPlayer + ' symbol is ' + secondPlayerSymbol
+      playerSymbol.innerHTML = '<p>' + whichPlayer + ' symbol is ' + secondPlayerSymbol + '</p>'
     }
     if (whichPlayer != nextPlayer) {
       whichPlayer = nextPlayer
@@ -119,8 +125,10 @@ function setPlayer(symbol) {
       whichPlayer = 'first'
     }
   } else {
-    playerSymbol.innerHTML = 'Game in progress.'
+    playerSymbol.innerHTML = '<p>Game in progress.</p>'
   }
+  let clearInput = document.getElementById('symbolInput')
+  clearInput.value = ''
 }
 
 function playGame() {
@@ -152,7 +160,7 @@ function handleClick(cellID) {
 function placeSymbol(square) {
   let output = document.getElementById('output')
   if (square.innerHTML != '') {
-    output.innerHTML = '<p>Impossible! That cell is already full.</p>'
+    output.innerHTML = '<p>Space full!</p>'
   } else {
     if (turn === 'x') {
       square.textContent = firstPlayerSymbol
