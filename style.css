@@ -33,15 +33,8 @@ button {
   1px 1px 20px rgba(0, 0, 0, 0.1);
 }
 
-h2 {
-  font-size: 30px;
-  text-align: center;
-  height: 75px;
-}
-
-span{
-  font-size: 75px;
-  margin-top: 20px;
+h1 {
+  margin-bottom: 0px;
 }
 
 div[id^="row-"] div {
@@ -82,7 +75,7 @@ div.board {
 }
 #wrapper {
   position: absolute;
-  top: 450px;
+  top: 440px;
   left: 50px;
   text-align: center;
 }
@@ -106,8 +99,8 @@ div.board {
   width: 175px;
 }
 .box {
-  padding-bottom: 20px;
-  padding-top: 0;
+  text-align: center;
+  line-height: 200px;
 }
 .symbolButton {
   margin-right: 2px;
