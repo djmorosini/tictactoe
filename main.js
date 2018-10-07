@@ -99,12 +99,12 @@ function setPlayer(symbol) {
 function playGame() {
   let output = document.getElementById('output')
   if (turn === 'x') {
-    output.innerHTML = '<p>Ready Player X</p>'
+    output.innerHTML = `<p>Ready Player ${firstPlayerSymbol.toUpperCase()}</p>`
   } else {
     if (numberOfPlayers === 'one') {
       computerTurn()
     } else {
-      output.innerHTML = '<p>Ready Player O</p>'
+      output.innerHTML = `<p>Ready Player ${secondPlayerSymbol.toUpperCase()}</p>`
     }
   }
   if (numberOfPlayers === 'zero') {
@@ -126,44 +126,40 @@ function placeSymbol(square) {
   let output = document.getElementById('output')
   if (square.innerHTML != '') {
     output.innerHTML = '<p>Impossible! That cell is already full.</p>'
-  } else if (numberOfPlayers === 'zero') {
-    if (turn === 'x') {
-      square.textContent = 'x'
-    } else {
-      square.textContent = 'o'
-    }
-    checkBoard()
   } else {
     if (turn === 'x') {
       square.textContent = firstPlayerSymbol
-      if (firstPlayerSymbol === '🧙') {
-        let witch = new Audio("sounds/witchCackle.mp3")
-        witch.play()
-      } else if (firstPlayerSymbol === '🎃') {
-        let pumpkin = new Audio("sounds/pumkinLaugh.mp3")
-        pumpkin.play()
-      } else if (firstPlayerSymbol === '👻') {
-        let ghost = new Audio("sounds/ghostSound.mp3")
-        ghost.play()
-      } else if (firstPlayerSymbol === '🧛🏻‍‍') {
-        let vampire = new Audio("sounds/vampireSound.mp3")
-        vampire.play()
+      if (numberOfPlayers != 'zero') {
+        if (firstPlayerSymbol === '🧙') {
+          let witch = new Audio("sounds/witchCackle.mp3")
+          witch.play()
+        } else if (firstPlayerSymbol === '🎃') {
+          let pumpkin = new Audio("sounds/pumkinLaugh.mp3")
+          pumpkin.play()
+        } else if (firstPlayerSymbol === '👻') {
+          let ghost = new Audio("sounds/ghostSound.mp3")
+          ghost.play()
+        } else if (firstPlayerSymbol === '🧛🏻‍‍') {
+          let vampire = new Audio("sounds/vampireSound.mp3")
+          vampire.play()
+        }
       }
-
     } else {
       square.textContent = secondPlayerSymbol
-      if (secondPlayerSymbol === '🧙') {
-        let witch = new Audio("sounds/witchCackle.mp3")
-        witch.play()
-      } else if (secondPlayerSymbol === '🎃') {
-        let pumpkin = new Audio("sounds/pumkinLaugh.mp3")
-        pumpkin.play()
-      } else if (secondPlayerSymbol === '👻') {
-        let ghost = new Audio("sounds/ghostSound.mp3")
-        ghost.play()
-      } else if (secondPlayerSymbol === '🧛🏻‍') {
-        let vampire = new Audio("sounds/vampireSound.mp3")
-        vampire.play()
+      if (numberOfPlayers != 'zero') {
+        if (secondPlayerSymbol === '🧙') {
+          let witch = new Audio("sounds/witchCackle.mp3")
+          witch.play()
+        } else if (secondPlayerSymbol === '🎃') {
+          let pumpkin = new Audio("sounds/pumkinLaugh.mp3")
+          pumpkin.play()
+        } else if (secondPlayerSymbol === '👻') {
+          let ghost = new Audio("sounds/ghostSound.mp3")
+          ghost.play()
+        } else if (secondPlayerSymbol === '🧛🏻‍') {
+          let vampire = new Audio("sounds/vampireSound.mp3")
+          vampire.play()
+        }
       }
     }
     checkBoard()
@@ -171,13 +167,9 @@ function placeSymbol(square) {
 }
 
 function checkBoard() {
-  if (numberOfPlayers === 'zero') {
-    checkWinConditions('x')
-    checkWinConditions('o')
-  } else {
-    checkWinConditions(firstPlayerSymbol)
-    checkWinConditions(secondPlayerSymbol)
-  }
+  checkWinConditions(firstPlayerSymbol)
+  checkWinConditions(secondPlayerSymbol)
+
   let boxes = document.getElementsByClassName('box')
   let availableMoves = []
   for (let box of boxes) {
@@ -266,17 +258,16 @@ function computerTurn() {
 
   if (turn === 'x') {
     opposite = 'o'
+    oppositeSymbol = secondPlayerSymbol
+    turnSymbol = firstPlayerSymbol
   } else {
     opposite = 'x'
+    oppositeSymbol = firstPlayerSymbol
+    turnSymbol = secondPlayerSymbol
   }
 
-  if (numberOfPlayers === 'zero') {
-    lookForBlockOrWin(turn + turn)
-    lookForBlockOrWin(opposite + opposite)
-  } else {
-    lookForBlockOrWin(firstPlayerSymbol + firstPlayerSymbol)
-    lookForBlockOrWin(secondPlayerSymbol + secondPlayerSymbol)
-  }
+  lookForBlockOrWin(turnSymbol + turnSymbol)
+  lookForBlockOrWin(oppositeSymbol + oppositeSymbol)
 
   let one = document.getElementById('cell-1').innerHTML
   let two = document.getElementById('cell-2').innerHTML
@@ -297,13 +288,13 @@ function computerTurn() {
       handleClick(`cell-${secondCell}`)
     } else if (turn != opposite && five === '') {
       handleClick('cell-5')
-    } else if (turn != opposite && (five === opposite || five === turn) && one === '') {
+    } else if (turn != opposite && five != '' && one === '') {
       handleClick('cell-1')
-    } else if (turn != opposite && (one === opposite && eight === opposite || five === opposite && nine === opposite || four === opposite && eight === opposite) && seven === '') {
+    } else if (turn != opposite && (one === oppositeSymbol && eight === oppositeSymbol || five === oppositeSymbol && nine === oppositeSymbol || four === oppositeSymbol && eight === oppositeSymbol) && seven === '') {
       handleClick('cell-7')
-    } else if (turn != opposite && (six === opposite && eight === opposite || three === opposite && eight === opposite) && nine === '') {
+    } else if (turn != opposite && (six === oppositeSymbol && eight === oppositeSymbol || three === oppositeSymbol && eight === oppositeSymbol) && nine === '') {
       handleClick('cell-9')
-    } else if (turn != opposite && (two === opposite && four === opposite || two === opposite && six === opposite || six === opposite && eight === opposite) && three === '') {
+    } else if (turn != opposite && (two === oppositeSymbol && four === oppositeSymbol || two === oppositeSymbol && six === oppositeSymbol || six === oppositeSymbol && eight === oppositeSymbol) && three === '') {
       handleClick('cell-3')
     } else if (turn != opposite && two === '') {
       handleClick('cell-2')
