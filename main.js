@@ -1,5 +1,5 @@
 let turn = 'x'
-let continueGame = true
+let continueGame = false
 let numberOfPlayers
 let whichPlayer = 'first'
 let firstPlayerSymbol = 'x'
@@ -62,51 +62,64 @@ function createSecondCell() {
 
 function setPlayer(symbol) {
   let playerSymbol = document.getElementById('playerSymbol')
-  let nextPlayer = 'second'
-  if (symbol === 'witch') {
-    if (whichPlayer === 'first') {
-      firstPlayerSymbol = '🧙'
+  if (!continueGame) {
+    let nextPlayer = 'second'
+    if (symbol === 'witch') {
+      if (whichPlayer === 'first') {
+        firstPlayerSymbol = '🧙'
+      } else {
+        secondPlayerSymbol = '🧙'
+      }
+    } else if (symbol === 'pumpkin') {
+      if (whichPlayer === 'first') {
+        firstPlayerSymbol = '🎃'
+      } else {
+        secondPlayerSymbol = '🎃'
+      }
+    } else if (symbol === 'ghost') {
+      if (whichPlayer === 'first') {
+        firstPlayerSymbol = '👻'
+      } else {
+        secondPlayerSymbol = '👻'
+      }
+    } else if (symbol === 'vampire') {
+      if (whichPlayer === 'first') {
+        firstPlayerSymbol = '🧛🏻‍'
+      } else {
+        secondPlayerSymbol = '🧛🏻‍'
+      }
     } else {
-      secondPlayerSymbol = '🧙'
+      let symbolInput = document.getElementById('symbolInput').value
+      console.log('Symbol Input: ' + symbolInput.length)
+      if (symbolInput.length === 0) {
+        if (turn === 'x') {
+          symbolInput = 'x'
+        } else {
+          symbolInput = 'o'
+        }
+      } else if (symbolInput.length > 2) {
+        symbolInput = symbolInput.slice(0, 2)
+      }
+      if (whichPlayer === 'first') {
+        firstPlayerSymbol = symbolInput
+        symbolInput.value = ''
+      } else {
+        secondPlayerSymbol = symbolInput
+        symbolInput.value = ''
+      }
     }
-  } else if (symbol === 'pumpkin') {
     if (whichPlayer === 'first') {
-      firstPlayerSymbol = '🎃'
+      playerSymbol.innerHTML = whichPlayer + ' symbol is ' + firstPlayerSymbol
     } else {
-      secondPlayerSymbol = '🎃'
+      playerSymbol.innerHTML = whichPlayer + ' symbol is ' + secondPlayerSymbol
     }
-  } else if (symbol === 'ghost') {
-    if (whichPlayer === 'first') {
-      firstPlayerSymbol = '👻'
+    if (whichPlayer != nextPlayer) {
+      whichPlayer = nextPlayer
     } else {
-      secondPlayerSymbol = '👻'
-    }
-  } else if (symbol === 'vampire') {
-    if (whichPlayer === 'first') {
-      firstPlayerSymbol = '🧛🏻‍'
-    } else {
-      secondPlayerSymbol = '🧛🏻‍'
+      whichPlayer = 'first'
     }
   } else {
-    let symbolInput = document.getElementById('symbolInput').value
-    console.log('Symbol Input: '+symbolInput.slice(0,1))
-    if (whichPlayer === 'first') {
-      firstPlayerSymbol = symbolInput.slice(0,1)
-      symbolInput.value = ''
-    } else {
-      secondPlayerSymbol = symbolInput.slice(0,1)
-      symbolInput.value = ''
-    }
-  }
-  if (whichPlayer === 'first') {
-    playerSymbol.innerHTML = whichPlayer + ' symbol is ' + firstPlayerSymbol
-  } else {
-    playerSymbol.innerHTML = whichPlayer + ' symbol is ' + secondPlayerSymbol
-  }
-  if (whichPlayer != nextPlayer) {
-    whichPlayer = nextPlayer
-  } else {
-    whichPlayer = 'first'
+    playerSymbol.innerHTML = 'Game in progress.'
   }
 }
 
