@@ -241,7 +241,8 @@ function checkWinConditions(symbol) {
 }
 
 function giveWin(symbol) {
-  if (symbol === firstPlayerSymbol) {
+  console.log(symbol +" : "+ firstPlayerSymbol)
+  if (symbol == firstPlayerSymbol) {
     xWins = xWins + 1
     console.log('X wins: ' + xWins)
   } else {
