@@ -80,3 +80,8 @@ div.board {
 #output {
   font-size: 20px;
 }
+#choose {
+  display: flex;
+  flex-flow: row wrap;
+  width: 175px;
+}

@@ -63,7 +63,6 @@ function createSecondCell() {
 function setPlayer(symbol) {
   let playerSymbol = document.getElementById('playerSymbol')
   let nextPlayer = 'second'
-  playerSymbol.innerHTML = whichPlayer + ' symbol is ' + symbol
   if (symbol === 'witch') {
     if (whichPlayer === 'first') {
       firstPlayerSymbol = '🧙'
@@ -88,6 +87,21 @@ function setPlayer(symbol) {
     } else {
       secondPlayerSymbol = '🧛🏻‍'
     }
+  } else {
+    let symbolInput = document.getElementById('symbolInput').value
+    console.log('Symbol Input: '+symbolInput.slice(0,1))
+    if (whichPlayer === 'first') {
+      firstPlayerSymbol = symbolInput.slice(0,1)
+      symbolInput.value = ''
+    } else {
+      secondPlayerSymbol = symbolInput.slice(0,1)
+      symbolInput.value = ''
+    }
+  }
+  if (whichPlayer === 'first') {
+    playerSymbol.innerHTML = whichPlayer + ' symbol is ' + firstPlayerSymbol
+  } else {
+    playerSymbol.innerHTML = whichPlayer + ' symbol is ' + secondPlayerSymbol
   }
   if (whichPlayer != nextPlayer) {
     whichPlayer = nextPlayer
@@ -241,7 +255,7 @@ function checkWinConditions(symbol) {
 }
 
 function giveWin(symbol) {
-  console.log(symbol +" : "+ firstPlayerSymbol)
+  console.log(symbol + " : " + firstPlayerSymbol)
   if (symbol == firstPlayerSymbol) {
     xWins = xWins + 1
     console.log('X wins: ' + xWins)
