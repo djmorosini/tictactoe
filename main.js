@@ -37,6 +37,9 @@ function setupGame(players) {
   turn = 'x'
   continueGame = true
   let endGameButton = document.getElementById('end-game')
+  let winningLine = document.getElementById('winning-line')
+
+  winningLine.innerHTML = ''
 
   endGameButton.disabled = false
 
@@ -276,8 +279,27 @@ function checkWinConditions(symbol) {
     output.innerHTML = `<p>${symbol.toUpperCase()} wins!</p>`
     continueGame = false
     let endGameButton = document.getElementById('end-game')
-
     endGameButton.disabled = true
+    
+    let winningLine = document.getElementById('winning-line')
+    if([one, two, three].join('') === (symbol.repeat(3))) {
+      winningLine.innerHTML = "<div id='top-row' class='line-div'></div>"
+    } else if([one, four, seven].join('') === (symbol.repeat(3))) {
+      winningLine.innerHTML = "<div id='col-one' class='line-div'></div>"
+    } else if([one, five, nine].join('') === (symbol.repeat(3))) {
+      winningLine.innerHTML = "<div id='main-diag' class='line-div'></div>"
+    } else if([two, five, eight].join('') === (symbol.repeat(3))) {
+      winningLine.innerHTML = "<div id='col-two' class='line-div'></div>"
+    } else if([three, five, seven].join('') === (symbol.repeat(3))) {
+      winningLine.innerHTML = "<div id='skew-diag' class='line-div'></div>"
+    } else if([three, six, nine].join('') === (symbol.repeat(3))) {
+      winningLine.innerHTML = "<div id='col-three' class='line-div'></div>"
+    } else if([four, five, six].join('') === (symbol.repeat(3))) {
+      winningLine.innerHTML = "<div id='mid-row' class='line-div'></div>"
+    } else if([seven, eight, nine].join('') === (symbol.repeat(3))) {
+      winningLine.innerHTML = "<div id='bottom-row' class='line-div'></div>"
+    }
+
     if (numberOfPlayers === 'zero') {
       giveWin(symbol)
     }

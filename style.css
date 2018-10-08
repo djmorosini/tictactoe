@@ -12,7 +12,7 @@ body {
   background-color: lightgray;
   background-image: url('./images/darkHalloween.jpg');
   background-size: cover;
-  background-position: center;
+  background-position: 50% 20%;
   color: rgb(249, 80, 1);
   text-shadow: 1px 1px 0px black,
   1px 1px 10px rgba(0, 0, 0, 0.15),
@@ -88,7 +88,9 @@ div[id^="row-"] {
 div.board {
   width: 608px;
   overflow: hidden;
-  margin: 0 auto;
+  position: absolute;
+  top: 20px;
+  left: 300px;
 }
 #wrapper {
   position: absolute;
@@ -131,7 +133,6 @@ div.board {
   color: rgb(249, 80, 1);
   border: 1px solid black;
 }
-
 #symbolInput {
   width: 60px;
   height: 35px;
@@ -146,4 +147,65 @@ div.board {
   1px 1px 10px rgba(0, 0, 0, 0.15),
   1px 1px 2px rgba(0, 0, 0, 0.1),
   1px 1px 20px rgba(0, 0, 0, 0.1);
+}
+#top-row {
+  width: 550px;
+  border-bottom: 5px solid rgb(138,7,7);
+  position: absolute;
+  top: 110px;
+  left: 25px;
+}
+#mid-row {
+  width: 550px;
+  border-bottom: 5px solid rgb(138,7,7);
+  position: absolute;
+  top: 310px;
+  left: 25px;
+}
+#bottom-row {
+  width: 550px;
+  border-bottom: 5px solid rgb(138,7,7);
+  position: absolute;
+  top: 510px;
+  left: 25px;
+}
+#col-one {
+  width: 550px;
+  border-bottom: 5px solid rgb(138,7,7);
+  position: absolute;
+  top: 310px;
+  right: 235px;
+  transform: rotate(90deg);
+}
+#col-two {
+  width: 550px;
+  border-bottom: 5px solid rgb(138,7,7);
+  position: absolute;
+  top: 310px;
+  left: 25px;
+  transform: rotate(90deg);
+}
+#col-three {
+  width: 550px;
+  border-bottom: 5px solid rgb(138,7,7);
+  position: absolute;
+  top: 310px;
+  left: 230px;
+  transform: rotate(90deg);
+}
+#skew-diag {
+  width: 700px;
+  border-bottom: 5px solid rgb(138,7,7);
+  position: absolute;
+  top: 310px;
+  left: -50px;
+  transform: rotate(135deg);
+}
+#main-diag {
+  width: 700px;
+  border-bottom: 5px solid rgb(138,7,7);
+  position: absolute;
+  top: 310px;
+  right: -50px;
+  transform: rotate(45deg);
 }
