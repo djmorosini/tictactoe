@@ -98,7 +98,7 @@ function setPlayer(symbol) {
       let symbolInput = document.getElementById('symbolInput').value
       console.log('Symbol Input: ' + symbolInput.length)
       if (symbolInput.length === 0) {
-        if (turn === 'x') {
+        if (turn === 'x' && whichPlayer === 'first') {
           symbolInput = 'x'
         } else {
           symbolInput = 'o'
