@@ -27,12 +27,18 @@ function endGame() {
   continueGame = false;
   let output = document.getElementById('output')
   output.innerHTML = '<p>Game Ended!</p>'
+  let endGameButton = document.getElementById('end-game')
+
+  endGameButton.disabled = true
 }
 
 function setupGame(players) {
   let title = document.getElementById('title')
   turn = 'x'
   continueGame = true
+  let endGameButton = document.getElementById('end-game')
+
+  endGameButton.disabled = false
 
   let cells = document.getElementsByClassName('box')
   for (let cell of cells) {
@@ -269,6 +275,9 @@ function checkWinConditions(symbol) {
   ) {
     output.innerHTML = `<p>${symbol.toUpperCase()} wins!</p>`
     continueGame = false
+    let endGameButton = document.getElementById('end-game')
+
+    endGameButton.disabled = true
     if (numberOfPlayers === 'zero') {
       giveWin(symbol)
     }

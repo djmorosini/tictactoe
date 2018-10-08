@@ -21,7 +21,7 @@
       <button class='symbolButton' onclick='setPlayer("🎃")'>🎃</button>
       <button class='symbolButton' onclick='setPlayer("👻")'>👻</button>
       <button class='symbolButton' onclick='setPlayer("🧛🏻‍")'>🧛🏻‍</button>
-      <input id='symbolInput' maxlength="2"/><button id='submitButton' onclick='setPlayer("input")'>Submit</button>
+      <input id='symbolInput' maxlength="2" /><button id='submitButton' onclick='setPlayer("input")'>Submit</button>
     </div>
     <div>Start a Game:</div>
     <button class='startButton' onClick="setupGame('one')">PvE Start</button>
@@ -57,6 +57,9 @@
     for (let cell of cells) {
       cell.addEventListener('click', function () { handleClick(cell.id) })
     }
+    let endGameButton = document.getElementById('end-game')
+
+    endGameButton.disabled = true
   </script>
 </body>
 

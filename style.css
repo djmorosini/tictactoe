@@ -37,7 +37,13 @@ button {
 button:hover {
   background-color: rgb(249, 80, 1);
   color: black;
-  border: 1px solid rgb(249, 80, 1);
+  border: 1px solid black;
+}
+
+button:hover:disabled {
+  background-color: black;
+  color: rgb(249, 80, 1);
+  border: 1px solid rgb(249, 80, 1);;
 }
 
 h1 {
@@ -120,11 +126,12 @@ div.board {
   height: 40px;
   width: 172px;
 }
-#end-game:active {
+#end-game:hover:active {
   background-color: black;
   color: rgb(249, 80, 1);
-  border: 1px solid rgb(249, 80, 1);
+  border: 1px solid black;
 }
+
 #symbolInput {
   width: 60px;
   height: 35px;
