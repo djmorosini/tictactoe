@@ -3,7 +3,10 @@ body {
   margin: 10px auto;
   text-align: center;
   padding: 10px;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   /* font-family: 'Lakki Reddy', cursive;
   font-family: 'Butcherman', cursive;
   font-family: 'Nosifer', cursive; */
@@ -28,7 +31,11 @@ button {
   background-color: black;
   color: rgb(249, 80, 1);
   border: 1px solid rgb(249, 80, 1);
-  box-shadow: 1px 1px 0px black,
+  -webkit-box-shadow: 1px 1px 0px black,
+  1px 1px 10px rgba(0, 0, 0, 0.15),
+  1px 1px 2px rgba(0, 0, 0, 0.1),
+  1px 1px 20px rgba(0, 0, 0, 0.1);
+          box-shadow: 1px 1px 0px black,
   1px 1px 10px rgba(0, 0, 0, 0.15),
   1px 1px 2px rgba(0, 0, 0, 0.1),
   1px 1px 20px rgba(0, 0, 0, 0.1);
@@ -63,11 +70,13 @@ div[id^="row-"] div:last-child {
 
 div[id^="row-"] div:first-child {
   border-left: none;
-  box-shadow: 15px 0px 10px -10px rgba(0,0,0,0.51);
+  -webkit-box-shadow: 15px 0px 10px -10px rgba(0,0,0,0.51);
+          box-shadow: 15px 0px 10px -10px rgba(0,0,0,0.51);
 }
 
 div[id^="row-"] div:nth-child(2) {
-  box-shadow: 15px 0px 10px -10px rgba(0,0,0,0.51);
+  -webkit-box-shadow: 15px 0px 10px -10px rgba(0,0,0,0.51);
+          box-shadow: 15px 0px 10px -10px rgba(0,0,0,0.51);
 }
 
 div[id="row-1"] div{
@@ -81,7 +90,8 @@ div[id="row-3"] div{
 div[id^="row-"] {
   clear: float;
   width: 608px;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   overflow: hidden;
 }
 
@@ -103,8 +113,13 @@ div.board {
   left: 50px;
   top: -10px;
   text-align: start;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 .board {
   font-size: 130px;
@@ -113,8 +128,13 @@ div.board {
   font-size: 20px;
 }
 #choose {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-flow: row wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
   width: 175px;
 }
 .box {
@@ -176,7 +196,9 @@ div.board {
   position: absolute;
   top: 310px;
   right: 235px;
-  transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
+          transform: rotate(90deg);
 }
 #col-two {
   width: 550px;
@@ -184,7 +206,9 @@ div.board {
   position: absolute;
   top: 310px;
   left: 25px;
-  transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
+          transform: rotate(90deg);
 }
 #col-three {
   width: 550px;
@@ -192,7 +216,9 @@ div.board {
   position: absolute;
   top: 310px;
   left: 230px;
-  transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
+          transform: rotate(90deg);
 }
 #skew-diag {
   width: 700px;
@@ -200,7 +226,9 @@ div.board {
   position: absolute;
   top: 310px;
   left: -50px;
-  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+      -ms-transform: rotate(135deg);
+          transform: rotate(135deg);
 }
 #main-diag {
   width: 700px;
@@ -208,5 +236,7 @@ div.board {
   position: absolute;
   top: 310px;
   right: -50px;
-  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
 }
