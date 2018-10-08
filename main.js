@@ -15,32 +15,14 @@ let aiGame = 1
 
 // 🧟 🎃 👻 🧛🏻‍
 
-var delay = (function () {
-  var timer = 0;
-  return function (callback, ms) {
-    clearTimeout(timer);
-    timer = setTimeout(callback, ms);
-  };
-})();
-
-function endGame() {
-  continueGame = false;
-  let output = document.getElementById('output')
-  output.innerHTML = '<p>Game Ended!</p>'
-  let endGameButton = document.getElementById('end-game')
-
-  endGameButton.disabled = true
-}
-
 function setupGame(players) {
   let title = document.getElementById('title')
-  turn = 'x'
-  continueGame = true
   let endGameButton = document.getElementById('end-game')
   let winningLine = document.getElementById('winning-line')
 
+  turn = 'x'
+  continueGame = true
   winningLine.innerHTML = ''
-
   endGameButton.disabled = false
 
   let cells = document.getElementsByClassName('box')
@@ -68,6 +50,10 @@ function setupGame(players) {
   playGame()
 }
 
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max) + 1);
+}
+
 function createSecondCell() {
   secondCell = getRandomInt(9)
   if (firstCell === secondCell) {
@@ -75,70 +61,13 @@ function createSecondCell() {
   }
 }
 
-function setPlayer(symbol) {
-  let playerSymbol = document.getElementById('playerSymbol')
-  if (!continueGame) {
-    let nextPlayer = 'second'
-    if (symbol != firstPlayerSymbol && symbol != secondPlayerSymbol) {
-      if (symbol === '🧟') {
-        if (whichPlayer === 'first') {
-          firstPlayerSymbol = '🧟'
-        } else {
-          secondPlayerSymbol = '🧟'
-        }
-      } else if (symbol === '🎃') {
-        if (whichPlayer === 'first') {
-          firstPlayerSymbol = '🎃'
-        } else {
-          secondPlayerSymbol = '🎃'
-        }
-      } else if (symbol === '👻') {
-        if (whichPlayer === 'first') {
-          firstPlayerSymbol = '👻'
-        } else {
-          secondPlayerSymbol = '👻'
-        }
-      } else if (symbol === '🧛🏻‍') {
-        if (whichPlayer === 'first') {
-          firstPlayerSymbol = '🧛🏻‍'
-        } else {
-          secondPlayerSymbol = '🧛🏻‍'
-        }
-      } else {
-        let symbolInput = document.getElementById('symbolInput').value
-        console.log('Symbol Input: ' + symbolInput.length)
-        if (symbolInput.length === 0) {
-          if (turn === 'x' && whichPlayer === 'first') {
-            symbolInput = 'x'
-          } else {
-            symbolInput = 'o'
-          }
-        }
-        if (whichPlayer === 'first') {
-          firstPlayerSymbol = symbolInput
-        } else {
-          secondPlayerSymbol = symbolInput
-        }
-      }
-      if (whichPlayer === 'first') {
-        playerSymbol.innerHTML = '<p>' + whichPlayer + ' symbol is ' + firstPlayerSymbol + '</p>'
-      } else {
-        playerSymbol.innerHTML = '<p>' + whichPlayer + ' symbol is ' + secondPlayerSymbol + '</p>'
-      }
-      if (whichPlayer != nextPlayer) {
-        whichPlayer = nextPlayer
-      } else {
-        whichPlayer = 'first'
-      }
-    } else {
-      playerSymbol.innerHTML = '<p>Can\'t be the same.</p>'
-    }
-  } else {
-    playerSymbol.innerHTML = '<p>Game in progress.</p>'
-  }
-  let clearInput = document.getElementById('symbolInput')
-  clearInput.value = ''
-}
+var delay = (function () {
+  var timer = 0;
+  return function (callback, ms) {
+    clearTimeout(timer);
+    timer = setTimeout(callback, ms);
+  };
+})();
 
 function playGame() {
   let output = document.getElementById('output')
@@ -280,23 +209,23 @@ function checkWinConditions(symbol) {
     continueGame = false
     let endGameButton = document.getElementById('end-game')
     endGameButton.disabled = true
-    
+
     let winningLine = document.getElementById('winning-line')
-    if([one, two, three].join('') === (symbol.repeat(3))) {
+    if ([one, two, three].join('') === (symbol.repeat(3))) {
       winningLine.innerHTML = "<div id='top-row' class='line-div'></div>"
-    } else if([one, four, seven].join('') === (symbol.repeat(3))) {
+    } else if ([one, four, seven].join('') === (symbol.repeat(3))) {
       winningLine.innerHTML = "<div id='col-one' class='line-div'></div>"
-    } else if([one, five, nine].join('') === (symbol.repeat(3))) {
+    } else if ([one, five, nine].join('') === (symbol.repeat(3))) {
       winningLine.innerHTML = "<div id='main-diag' class='line-div'></div>"
-    } else if([two, five, eight].join('') === (symbol.repeat(3))) {
+    } else if ([two, five, eight].join('') === (symbol.repeat(3))) {
       winningLine.innerHTML = "<div id='col-two' class='line-div'></div>"
-    } else if([three, five, seven].join('') === (symbol.repeat(3))) {
+    } else if ([three, five, seven].join('') === (symbol.repeat(3))) {
       winningLine.innerHTML = "<div id='skew-diag' class='line-div'></div>"
-    } else if([three, six, nine].join('') === (symbol.repeat(3))) {
+    } else if ([three, six, nine].join('') === (symbol.repeat(3))) {
       winningLine.innerHTML = "<div id='col-three' class='line-div'></div>"
-    } else if([four, five, six].join('') === (symbol.repeat(3))) {
+    } else if ([four, five, six].join('') === (symbol.repeat(3))) {
       winningLine.innerHTML = "<div id='mid-row' class='line-div'></div>"
-    } else if([seven, eight, nine].join('') === (symbol.repeat(3))) {
+    } else if ([seven, eight, nine].join('') === (symbol.repeat(3))) {
       winningLine.innerHTML = "<div id='bottom-row' class='line-div'></div>"
     }
 
@@ -317,12 +246,7 @@ function giveWin(symbol) {
   }
 }
 
-function getRandomInt(max) {
-  return Math.floor(Math.random() * Math.floor(max) + 1);
-}
-
 function computerTurn() {
-
   if (turn === 'x') {
     opposite = 'o'
     oppositeSymbol = secondPlayerSymbol
@@ -428,4 +352,78 @@ function lookForBlockOrWin(symbol) {
   } else if (turn != opposite && ([seven, nine].join('') === symbol || [two, five].join('') === symbol) && eight === '') {
     handleClick('cell-8')
   }
+}
+
+function setPlayer(symbol) {
+  let playerSymbol = document.getElementById('playerSymbol')
+  if (!continueGame) {
+    let nextPlayer = 'second'
+    if (symbol != firstPlayerSymbol && symbol != secondPlayerSymbol) {
+      if (symbol === '🧟') {
+        if (whichPlayer === 'first') {
+          firstPlayerSymbol = '🧟'
+        } else {
+          secondPlayerSymbol = '🧟'
+        }
+      } else if (symbol === '🎃') {
+        if (whichPlayer === 'first') {
+          firstPlayerSymbol = '🎃'
+        } else {
+          secondPlayerSymbol = '🎃'
+        }
+      } else if (symbol === '👻') {
+        if (whichPlayer === 'first') {
+          firstPlayerSymbol = '👻'
+        } else {
+          secondPlayerSymbol = '👻'
+        }
+      } else if (symbol === '🧛🏻‍') {
+        if (whichPlayer === 'first') {
+          firstPlayerSymbol = '🧛🏻‍'
+        } else {
+          secondPlayerSymbol = '🧛🏻‍'
+        }
+      } else {
+        let symbolInput = document.getElementById('symbolInput').value
+        console.log('Symbol Input: ' + symbolInput.length)
+        if (symbolInput.length === 0) {
+          if (turn === 'x' && whichPlayer === 'first') {
+            symbolInput = 'x'
+          } else {
+            symbolInput = 'o'
+          }
+        }
+        if (whichPlayer === 'first') {
+          firstPlayerSymbol = symbolInput
+        } else {
+          secondPlayerSymbol = symbolInput
+        }
+      }
+      if (whichPlayer === 'first') {
+        playerSymbol.innerHTML = '<p>' + whichPlayer + ' symbol is ' + firstPlayerSymbol + '</p>'
+      } else {
+        playerSymbol.innerHTML = '<p>' + whichPlayer + ' symbol is ' + secondPlayerSymbol + '</p>'
+      }
+      if (whichPlayer != nextPlayer) {
+        whichPlayer = nextPlayer
+      } else {
+        whichPlayer = 'first'
+      }
+    } else {
+      playerSymbol.innerHTML = '<p>Can\'t be the same.</p>'
+    }
+  } else {
+    playerSymbol.innerHTML = '<p>Game in progress.</p>'
+  }
+  let clearInput = document.getElementById('symbolInput')
+  clearInput.value = ''
+}
+
+function endGame() {
+  continueGame = false;
+  let output = document.getElementById('output')
+  output.innerHTML = '<p>Game Ended!</p>'
+  let endGameButton = document.getElementById('end-game')
+
+  endGameButton.disabled = true
 }
