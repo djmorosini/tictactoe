@@ -349,13 +349,13 @@ function computerTurn() {
 
     if (turn === 'o' && five === '') {
       handleClick('cell-5')
-    } else if (turn === 'o' && five === 'x' && one === '') {
+    } else if (turn === 'o' && five === firstPlayerSymbol && one === '') {
       handleClick('cell-1')
-    } else if (turn === 'o' && (one === 'x' && eight === 'x' || five === 'x' && nine === 'x' || four === 'x' && eight === 'x') && seven === '') {
+    } else if (turn === 'o' && (one === firstPlayerSymbol && eight === firstPlayerSymbol || five === firstPlayerSymbol && nine === firstPlayerSymbol || four === firstPlayerSymbol && eight === firstPlayerSymbol) && seven === '') {
       handleClick('cell-7')
-    } else if (turn === 'o' && (six === 'x' && eight === 'x' || three === 'x' && eight === 'x') && nine === '') {
+    } else if (turn === 'o' && (six === firstPlayerSymbol && eight === firstPlayerSymbol || three === firstPlayerSymbol && eight === firstPlayerSymbol) && nine === '') {
       handleClick('cell-9')
-    } else if (turn === 'o' && (two === 'x' && four === 'x' || two === 'x' && six === 'x' || six === 'x' && eight === 'x') && three === '') {
+    } else if (turn === 'o' && (two === firstPlayerSymbol && four === firstPlayerSymbol || two === firstPlayerSymbol && six === firstPlayerSymbol || six === firstPlayerSymbol && eight === firstPlayerSymbol) && three === '') {
       handleClick('cell-3')
     } else if (turn === 'o' && two === '') {
       handleClick('cell-2')
