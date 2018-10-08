@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Tic Tac Toe</title>
-  <link rel="icon" type="image/png" href="images/tictactoe.png">
+  <link rel="icon" type="image/png" href="images/ghost.png">
   <link href="https://fonts.googleapis.com/css?family=Butcherman|Creepster|Eater|Nosifer|Lakki+Reddy" rel="stylesheet">
   <link type="text/css" rel="stylesheet" href="style.css">
   <script src="main.js"></script>
@@ -15,15 +15,15 @@
 <body>
   <div id='buttons'>
     <h1>Tic Tac Toe</h1>
-    <div>Choose a Symbol;</div>
+    <div>Choose a Symbol:</div>
     <div id='choose'>
-      <button class='symbolButton' onclick='setPlayer("witch")'>🧙</button>
-      <button class='symbolButton' onclick='setPlayer("pumpkin")'>🎃</button>
-      <button class='symbolButton' onclick='setPlayer("ghost")'>👻</button>
-      <button class='symbolButton' onclick='setPlayer("vampire")'>🧛🏻‍</button>
-      <input id='symbolInput' /><button id='submitButton' onclick='setPlayer("input")'>Submit</button>
+      <button class='symbolButton' onclick='setPlayer("🧟")'>🧟</button>
+      <button class='symbolButton' onclick='setPlayer("🎃")'>🎃</button>
+      <button class='symbolButton' onclick='setPlayer("👻")'>👻</button>
+      <button class='symbolButton' onclick='setPlayer("🧛🏻‍")'>🧛🏻‍</button>
+      <input id='symbolInput' maxlength="2"/><button id='submitButton' onclick='setPlayer("input")'>Submit</button>
     </div>
-    <div>Start a Game;</div>
+    <div>Start a Game:</div>
     <button class='startButton' onClick="setupGame('one')">PvE Start</button>
     <button class='startButton' onClick="setupGame('two')">PvP Start</button>
     <button class='startButton' onClick="setupGame('zero')">AI Battle</button>

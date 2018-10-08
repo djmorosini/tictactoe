@@ -22,6 +22,7 @@ body {
 
 button {
   font-family: 'Eater', cursive;
+  cursor: pointer;
   font-size: 20px;
   margin-bottom: 5px;
   background-color: black;
@@ -46,9 +47,8 @@ h1 {
 div[id^="row-"] div {
   width: 200px;
   height: 200px;
-  border: 1px solid rgb(249, 80, 1);
+  border: 2px solid rgb(249, 80, 1);
   float: left;
-
 }
 
 div[id^="row-"] div:last-child {
@@ -128,8 +128,9 @@ div.board {
 #symbolInput {
   width: 60px;
   height: 35px;
+  text-align: center;
   margin-right: 5px;
-  font-size: 20px;
+  font-size: 25px;
   font-family: 'Eater', cursive;
   background-color: black;
   color: rgb(249, 80, 1);

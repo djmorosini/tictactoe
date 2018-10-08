@@ -13,7 +13,7 @@ let oWins = 0
 let ties = 0
 let aiGame = 1
 
-// 🧙 🎃 👻 🧛🏻‍
+// 🧟 🎃 👻 🧛🏻‍
 
 var delay = (function () {
   var timer = 0;
@@ -70,59 +70,59 @@ function setPlayer(symbol) {
   let playerSymbol = document.getElementById('playerSymbol')
   if (!continueGame) {
     let nextPlayer = 'second'
-    if (symbol === 'witch') {
-      if (whichPlayer === 'first') {
-        firstPlayerSymbol = '🧙'
-      } else {
-        secondPlayerSymbol = '🧙'
-      }
-    } else if (symbol === 'pumpkin') {
-      if (whichPlayer === 'first') {
-        firstPlayerSymbol = '🎃'
-      } else {
-        secondPlayerSymbol = '🎃'
-      }
-    } else if (symbol === 'ghost') {
-      if (whichPlayer === 'first') {
-        firstPlayerSymbol = '👻'
-      } else {
-        secondPlayerSymbol = '👻'
-      }
-    } else if (symbol === 'vampire') {
-      if (whichPlayer === 'first') {
-        firstPlayerSymbol = '🧛🏻‍'
-      } else {
-        secondPlayerSymbol = '🧛🏻‍'
-      }
-    } else {
-      let symbolInput = document.getElementById('symbolInput').value
-      console.log('Symbol Input: ' + symbolInput.length)
-      if (symbolInput.length === 0) {
-        if (turn === 'x' && whichPlayer === 'first') {
-          symbolInput = 'x'
+    if (symbol != firstPlayerSymbol && symbol != secondPlayerSymbol) {
+      if (symbol === '🧟') {
+        if (whichPlayer === 'first') {
+          firstPlayerSymbol = '🧟'
         } else {
-          symbolInput = 'o'
+          secondPlayerSymbol = '🧟'
         }
-      } else if (symbolInput.length > 2) {
-        symbolInput = symbolInput.slice(0, 2)
+      } else if (symbol === '🎃') {
+        if (whichPlayer === 'first') {
+          firstPlayerSymbol = '🎃'
+        } else {
+          secondPlayerSymbol = '🎃'
+        }
+      } else if (symbol === '👻') {
+        if (whichPlayer === 'first') {
+          firstPlayerSymbol = '👻'
+        } else {
+          secondPlayerSymbol = '👻'
+        }
+      } else if (symbol === '🧛🏻‍') {
+        if (whichPlayer === 'first') {
+          firstPlayerSymbol = '🧛🏻‍'
+        } else {
+          secondPlayerSymbol = '🧛🏻‍'
+        }
+      } else {
+        let symbolInput = document.getElementById('symbolInput').value
+        console.log('Symbol Input: ' + symbolInput.length)
+        if (symbolInput.length === 0) {
+          if (turn === 'x' && whichPlayer === 'first') {
+            symbolInput = 'x'
+          } else {
+            symbolInput = 'o'
+          }
+        }
+        if (whichPlayer === 'first') {
+          firstPlayerSymbol = symbolInput
+        } else {
+          secondPlayerSymbol = symbolInput
+        }
       }
       if (whichPlayer === 'first') {
-        firstPlayerSymbol = symbolInput
-        symbolInput.value = ''
+        playerSymbol.innerHTML = '<p>' + whichPlayer + ' symbol is ' + firstPlayerSymbol + '</p>'
       } else {
-        secondPlayerSymbol = symbolInput
-        symbolInput.value = ''
+        playerSymbol.innerHTML = '<p>' + whichPlayer + ' symbol is ' + secondPlayerSymbol + '</p>'
       }
-    }
-    if (whichPlayer === 'first') {
-      playerSymbol.innerHTML = '<p>' + whichPlayer + ' symbol is ' + firstPlayerSymbol + '</p>'
+      if (whichPlayer != nextPlayer) {
+        whichPlayer = nextPlayer
+      } else {
+        whichPlayer = 'first'
+      }
     } else {
-      playerSymbol.innerHTML = '<p>' + whichPlayer + ' symbol is ' + secondPlayerSymbol + '</p>'
-    }
-    if (whichPlayer != nextPlayer) {
-      whichPlayer = nextPlayer
-    } else {
-      whichPlayer = 'first'
+      playerSymbol.innerHTML = '<p>Can\'t be the same.</p>'
     }
   } else {
     playerSymbol.innerHTML = '<p>Game in progress.</p>'
@@ -165,11 +165,11 @@ function placeSymbol(square) {
     if (turn === 'x') {
       square.textContent = firstPlayerSymbol
       if (numberOfPlayers != 'zero') {
-        if (firstPlayerSymbol === '🧙') {
-          let witch = new Audio("sounds/witchCackle.mp3")
-          witch.play()
+        if (firstPlayerSymbol === '🧟') {
+          // let witch = new Audio("sounds/witchCackle.mp3")
+          // witch.play()
         } else if (firstPlayerSymbol === '🎃') {
-          let pumpkin = new Audio("sounds/pumkinLaugh.mp3")
+          let pumpkin = new Audio("sounds/witchCackle.mp3")
           pumpkin.play()
         } else if (firstPlayerSymbol === '👻') {
           let ghost = new Audio("sounds/ghostSound.mp3")
@@ -182,11 +182,11 @@ function placeSymbol(square) {
     } else {
       square.textContent = secondPlayerSymbol
       if (numberOfPlayers != 'zero') {
-        if (secondPlayerSymbol === '🧙') {
-          let witch = new Audio("sounds/witchCackle.mp3")
-          witch.play()
+        if (secondPlayerSymbol === '🧟') {
+          // let witch = new Audio("sounds/witchCackle.mp3")
+          // witch.play()
         } else if (secondPlayerSymbol === '🎃') {
-          let pumpkin = new Audio("sounds/pumkinLaugh.mp3")
+          let pumpkin = new Audio("sounds/witchCackle.mp3")
           pumpkin.play()
         } else if (secondPlayerSymbol === '👻') {
           let ghost = new Audio("sounds/ghostSound.mp3")
