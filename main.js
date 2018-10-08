@@ -170,7 +170,7 @@ function checkBoard() {
       delay(function () {
         aiGame = aiGame + 1
         setupGame('zero')
-      }, 1000);
+      }, 1500);
     }
   }
 }
@@ -228,7 +228,6 @@ function checkWinConditions(symbol) {
     } else if ([seven, eight, nine].join('') === (symbol.repeat(3))) {
       winningLine.innerHTML = "<div id='bottom-row' class='line-div'></div>"
     }
-
     if (numberOfPlayers === 'zero') {
       giveWin(symbol)
     }
@@ -236,7 +235,6 @@ function checkWinConditions(symbol) {
 }
 
 function giveWin(symbol) {
-  console.log(symbol + " : " + firstPlayerSymbol)
   if (symbol == firstPlayerSymbol) {
     xWins = xWins + 1
     console.log('X wins: ' + xWins)
@@ -420,10 +418,11 @@ function setPlayer(symbol) {
 }
 
 function endGame() {
-  continueGame = false;
   let output = document.getElementById('output')
-  output.innerHTML = '<p>Game Ended!</p>'
   let endGameButton = document.getElementById('end-game')
 
+  continueGame = false;
   endGameButton.disabled = true
+
+  output.innerHTML = '<p>Game Ended!</p>'
 }
