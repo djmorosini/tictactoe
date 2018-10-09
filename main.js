@@ -104,8 +104,8 @@ function placeSymbol(square) {
       square.textContent = firstPlayerSymbol
       if (numberOfPlayers != 'zero') {
         if (firstPlayerSymbol === '🧟') {
-          // let witch = new Audio("sounds/witchCackle.mp3")
-          // witch.play()
+          let zombie = new Audio("sounds/zombieSound.mp3")
+          zombie.play()
         } else if (firstPlayerSymbol === '🎃') {
           let pumpkin = new Audio("sounds/witchCackle.mp3")
           pumpkin.play()
@@ -121,8 +121,8 @@ function placeSymbol(square) {
       square.textContent = secondPlayerSymbol
       if (numberOfPlayers != 'zero') {
         if (secondPlayerSymbol === '🧟') {
-          // let witch = new Audio("sounds/witchCackle.mp3")
-          // witch.play()
+          let zombie = new Audio("sounds/zombieSound.mp3")
+          zombie.play()
         } else if (secondPlayerSymbol === '🎃') {
           let pumpkin = new Audio("sounds/witchCackle.mp3")
           pumpkin.play()
