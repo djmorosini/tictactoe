@@ -51,6 +51,7 @@ button:hover:disabled {
   background-color: black;
   color: rgb(249, 80, 1);
   border: 1px solid rgb(249, 80, 1);;
+  cursor: not-allowed;
 }
 
 h1 {

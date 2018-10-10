@@ -7,7 +7,7 @@ let secondPlayerSymbol = 'o'
 
 let firstCell
 let secondCell
-let opposite
+let oppositeTurn
 let xWins = 0
 let oWins = 0
 let ties = 0
@@ -102,37 +102,33 @@ function placeSymbol(square) {
   } else {
     if (turn === 'x') {
       square.textContent = firstPlayerSymbol
-      if (numberOfPlayers != 'zero') {
-        if (firstPlayerSymbol === '🧟') {
-          let zombie = new Audio("sounds/zombieSound.mp3")
-          zombie.play()
-        } else if (firstPlayerSymbol === '🎃') {
-          let pumpkin = new Audio("sounds/witchCackle.mp3")
-          pumpkin.play()
-        } else if (firstPlayerSymbol === '👻') {
-          let ghost = new Audio("sounds/ghostSound.mp3")
-          ghost.play()
-        } else if (firstPlayerSymbol === '🧛🏻‍‍') {
-          let vampire = new Audio("sounds/vampireSound.mp3")
-          vampire.play()
-        }
+      if (firstPlayerSymbol === '🧟' && numberOfPlayers != 'zero') {
+        let zombie = new Audio("sounds/zombieSound.mp3")
+        zombie.play()
+      } else if (firstPlayerSymbol === '🎃' && numberOfPlayers != 'zero') {
+        let pumpkin = new Audio("sounds/witchCackle.mp3")
+        pumpkin.play()
+      } else if (firstPlayerSymbol === '👻' && numberOfPlayers != 'zero') {
+        let ghost = new Audio("sounds/ghostSound.mp3")
+        ghost.play()
+      } else if (firstPlayerSymbol === '🧛🏻‍‍' && numberOfPlayers != 'zero') {
+        let vampire = new Audio("sounds/vampireSound.mp3")
+        vampire.play()
       }
     } else {
       square.textContent = secondPlayerSymbol
-      if (numberOfPlayers != 'zero') {
-        if (secondPlayerSymbol === '🧟') {
-          let zombie = new Audio("sounds/zombieSound.mp3")
-          zombie.play()
-        } else if (secondPlayerSymbol === '🎃') {
-          let pumpkin = new Audio("sounds/witchCackle.mp3")
-          pumpkin.play()
-        } else if (secondPlayerSymbol === '👻') {
-          let ghost = new Audio("sounds/ghostSound.mp3")
-          ghost.play()
-        } else if (secondPlayerSymbol === '🧛🏻‍') {
-          let vampire = new Audio("sounds/vampireSound.mp3")
-          vampire.play()
-        }
+      if (secondPlayerSymbol === '🧟' && numberOfPlayers != 'zero') {
+        let zombie = new Audio("sounds/zombieSound.mp3")
+        zombie.play()
+      } else if (secondPlayerSymbol === '🎃' && numberOfPlayers != 'zero') {
+        let pumpkin = new Audio("sounds/witchCackle.mp3")
+        pumpkin.play()
+      } else if (secondPlayerSymbol === '👻' && numberOfPlayers != 'zero') {
+        let ghost = new Audio("sounds/ghostSound.mp3")
+        ghost.play()
+      } else if (secondPlayerSymbol === '🧛🏻‍' && numberOfPlayers != 'zero') {
+        let vampire = new Audio("sounds/vampireSound.mp3")
+        vampire.play()
       }
     }
     checkBoard()
@@ -246,11 +242,11 @@ function giveWin(symbol) {
 
 function computerTurn() {
   if (turn === 'x') {
-    opposite = 'o'
+    oppositeTurn = 'o'
     oppositeSymbol = secondPlayerSymbol
     turnSymbol = firstPlayerSymbol
   } else {
-    opposite = 'x'
+    oppositeTurn = 'x'
     oppositeSymbol = firstPlayerSymbol
     turnSymbol = secondPlayerSymbol
   }
@@ -271,31 +267,31 @@ function computerTurn() {
   if (numberOfPlayers === 'zero') {
     let firstMove = document.getElementById(`cell-${firstCell}`).innerHTML
     let secondMove = document.getElementById(`cell-${secondCell}`).innerHTML
-    if (turn != opposite && firstMove === '') {
+    if (turn != oppositeTurn && firstMove === '') {
       handleClick(`cell-${firstCell}`)
-    } else if (turn != opposite && secondMove === '') {
+    } else if (turn != oppositeTurn && secondMove === '') {
       handleClick(`cell-${secondCell}`)
-    } else if (turn != opposite && five === '') {
+    } else if (turn != oppositeTurn && five === '') {
       handleClick('cell-5')
-    } else if (turn != opposite && five != '' && one === '') {
+    } else if (turn != oppositeTurn && five != '' && one === '') {
       handleClick('cell-1')
-    } else if (turn != opposite && (one === oppositeSymbol && eight === oppositeSymbol || five === oppositeSymbol && nine === oppositeSymbol || four === oppositeSymbol && eight === oppositeSymbol) && seven === '') {
+    } else if (turn != oppositeTurn && (one === oppositeSymbol && eight === oppositeSymbol || five === oppositeSymbol && nine === oppositeSymbol || four === oppositeSymbol && eight === oppositeSymbol) && seven === '') {
       handleClick('cell-7')
-    } else if (turn != opposite && (six === oppositeSymbol && eight === oppositeSymbol || three === oppositeSymbol && eight === oppositeSymbol) && nine === '') {
+    } else if (turn != oppositeTurn && (six === oppositeSymbol && eight === oppositeSymbol || three === oppositeSymbol && eight === oppositeSymbol) && nine === '') {
       handleClick('cell-9')
-    } else if (turn != opposite && (two === oppositeSymbol && four === oppositeSymbol || two === oppositeSymbol && six === oppositeSymbol || six === oppositeSymbol && eight === oppositeSymbol) && three === '') {
+    } else if (turn != oppositeTurn && (two === oppositeSymbol && four === oppositeSymbol || two === oppositeSymbol && six === oppositeSymbol || six === oppositeSymbol && eight === oppositeSymbol) && three === '') {
       handleClick('cell-3')
-    } else if (turn != opposite && two === '') {
+    } else if (turn != oppositeTurn && two === '') {
       handleClick('cell-2')
-    } else if (turn != opposite && four === '') {
+    } else if (turn != oppositeTurn && four === '') {
       handleClick('cell-4')
-    } else if (turn != opposite && six === '') {
+    } else if (turn != oppositeTurn && six === '') {
       handleClick('cell-6')
-    } else if (turn != opposite && eight === '') {
+    } else if (turn != oppositeTurn && eight === '') {
       handleClick('cell-8')
-    } else if (turn != opposite && nine === '') {
+    } else if (turn != oppositeTurn && nine === '') {
       handleClick('cell-9')
-    } else if (turn != opposite && seven === '') {
+    } else if (turn != oppositeTurn && seven === '') {
       handleClick('cell-7')
     }
   } else {
@@ -333,88 +329,89 @@ function lookForBlockOrWin(symbol) {
   let eight = document.getElementById('cell-8').innerHTML
   let nine = document.getElementById('cell-9').innerHTML
 
-  if (turn != opposite && ([two, three].join('') === symbol || [four, seven].join('') === symbol || [five, nine].join('') === symbol) && one === '') {
+  if (turn != oppositeTurn && ([two, three].join('') === symbol || [four, seven].join('') === symbol || [five, nine].join('') === symbol) && one === '') {
     handleClick('cell-1')
-  } else if (turn != opposite && ([one, two].join('') === symbol || [seven, five].join('') === symbol || [nine, six].join('') === symbol) && three === '') {
+  } else if (turn != oppositeTurn && ([one, two].join('') === symbol || [seven, five].join('') === symbol || [nine, six].join('') === symbol) && three === '') {
     handleClick('cell-3')
-  } else if (turn != opposite && ([one, four].join('') === symbol || [three, five].join('') === symbol || [nine, eight].join('') === symbol) && seven === '') {
+  } else if (turn != oppositeTurn && ([one, four].join('') === symbol || [three, five].join('') === symbol || [nine, eight].join('') === symbol) && seven === '') {
     handleClick('cell-7')
-  } else if (turn != opposite && ([one, five].join('') === symbol || [three, six].join('') === symbol || [seven, eight].join('') === symbol) && nine === '') {
+  } else if (turn != oppositeTurn && ([one, five].join('') === symbol || [three, six].join('') === symbol || [seven, eight].join('') === symbol) && nine === '') {
     handleClick('cell-9')
-  } else if (turn != opposite && ([one, three].join('') === symbol || [eight, five].join('') === symbol) && two === '') {
+  } else if (turn != oppositeTurn && ([one, three].join('') === symbol || [eight, five].join('') === symbol) && two === '') {
     handleClick('cell-2')
-  } else if (turn != opposite && ([five, six].join('') === symbol || [one, seven].join('') === symbol) && four === '') {
+  } else if (turn != oppositeTurn && ([five, six].join('') === symbol || [one, seven].join('') === symbol) && four === '') {
     handleClick('cell-4')
-  } else if (turn != opposite && ([three, nine].join('') === symbol || [four, five].join('') === symbol) && six === '') {
+  } else if (turn != oppositeTurn && ([three, nine].join('') === symbol || [four, five].join('') === symbol) && six === '') {
     handleClick('cell-6')
-  } else if (turn != opposite && ([seven, nine].join('') === symbol || [two, five].join('') === symbol) && eight === '') {
+  } else if (turn != oppositeTurn && ([seven, nine].join('') === symbol || [two, five].join('') === symbol) && eight === '') {
     handleClick('cell-8')
   }
 }
 
 function setPlayer(symbol) {
   let playerSymbol = document.getElementById('playerSymbol')
-  if (!continueGame) {
-    let nextPlayer = 'second'
-    if (symbol != firstPlayerSymbol && symbol != secondPlayerSymbol) {
-      if (symbol === '🧟') {
-        if (whichPlayer === 'first') {
-          firstPlayerSymbol = '🧟'
-        } else {
-          secondPlayerSymbol = '🧟'
-        }
-      } else if (symbol === '🎃') {
-        if (whichPlayer === 'first') {
-          firstPlayerSymbol = '🎃'
-        } else {
-          secondPlayerSymbol = '🎃'
-        }
-      } else if (symbol === '👻') {
-        if (whichPlayer === 'first') {
-          firstPlayerSymbol = '👻'
-        } else {
-          secondPlayerSymbol = '👻'
-        }
-      } else if (symbol === '🧛🏻‍') {
-        if (whichPlayer === 'first') {
-          firstPlayerSymbol = '🧛🏻‍'
-        } else {
-          secondPlayerSymbol = '🧛🏻‍'
-        }
-      } else {
-        let symbolInput = document.getElementById('symbolInput').value
-        console.log('Symbol Input: ' + symbolInput.length)
-        if (symbolInput.length === 0) {
-          if (turn === 'x' && whichPlayer === 'first') {
-            symbolInput = 'x'
-          } else {
-            symbolInput = 'o'
-          }
-        }
-        if (whichPlayer === 'first') {
-          firstPlayerSymbol = symbolInput
-        } else {
-          secondPlayerSymbol = symbolInput
-        }
-      }
-      if (whichPlayer === 'first') {
-        playerSymbol.innerHTML = '<p>' + whichPlayer + ' symbol is ' + firstPlayerSymbol + '</p>'
-      } else {
-        playerSymbol.innerHTML = '<p>' + whichPlayer + ' symbol is ' + secondPlayerSymbol + '</p>'
-      }
-      if (whichPlayer != nextPlayer) {
-        whichPlayer = nextPlayer
-      } else {
-        whichPlayer = 'first'
-      }
+  if (continueGame) {
+    playerSymbol.innerHTML = '<p>Game in progress.</p>'
+  } else if ((symbol === firstPlayerSymbol && whichPlayer === 'second') || (symbol === secondPlayerSymbol && whichPlayer === 'first')) {
+    playerSymbol.innerHTML = '<p>Can\'t be the same.</p>'
+  } else {
+    chooseSymbol(symbol)
+  }
+  let symbolInput = document.getElementById('symbolInput')
+  symbolInput.value = ''
+}
+
+function chooseSymbol(symbol) {
+  if (symbol === '🧟') {
+    if (whichPlayer === 'first') {
+      firstPlayerSymbol = '🧟'
     } else {
-      playerSymbol.innerHTML = '<p>Can\'t be the same.</p>'
+      secondPlayerSymbol = '🧟'
+    }
+  } else if (symbol === '🎃') {
+    if (whichPlayer === 'first') {
+      firstPlayerSymbol = '🎃'
+    } else {
+      secondPlayerSymbol = '🎃'
+    }
+  } else if (symbol === '👻') {
+    if (whichPlayer === 'first') {
+      firstPlayerSymbol = '👻'
+    } else {
+      secondPlayerSymbol = '👻'
+    }
+  } else if (symbol === '🧛🏻‍') {
+    if (whichPlayer === 'first') {
+      firstPlayerSymbol = '🧛🏻‍'
+    } else {
+      secondPlayerSymbol = '🧛🏻‍'
     }
   } else {
-    playerSymbol.innerHTML = '<p>Game in progress.</p>'
+    let symbolInput = document.getElementById('symbolInput').value
+    console.log('Symbol Input: ' + symbolInput.length)
+    if (symbolInput.length === 0) {
+      if (turn === 'x' && whichPlayer === 'first') {
+        symbolInput = 'x'
+      } else {
+        symbolInput = 'o'
+      }
+    }
+    if (whichPlayer === 'first') {
+      firstPlayerSymbol = symbolInput
+    } else {
+      secondPlayerSymbol = symbolInput
+    }
   }
-  let clearInput = document.getElementById('symbolInput')
-  clearInput.value = ''
+  if (whichPlayer === 'first') {
+    playerSymbol.innerHTML = '<p>' + whichPlayer + ' symbol is ' + firstPlayerSymbol + '</p>'
+  } else {
+    playerSymbol.innerHTML = '<p>' + whichPlayer + ' symbol is ' + secondPlayerSymbol + '</p>'
+  }
+  if (whichPlayer === 'first') {
+    whichPlayer = 'second'
+  } else {
+    whichPlayer = 'first'
+  }
 }
 
 function endGame() {
